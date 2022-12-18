@@ -1,0 +1,33 @@
+﻿<Window x:Class="Chapter02.LineInCustomSystem"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Chapter02"
+        mc:Ignorable="d"
+        Title="LineInCustomSystem" Height="240" Width="220">
+    <Border BorderBrush="Black" BorderThickness="1" Height="200" Width="200">
+        <Canvas Height="200" Width="200">
+            <Canvas.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleY="-1"/><!--좌표계를 상단왼쪽에서 하단 왼쪽으로 변경한다.-->
+                    <TranslateTransform Y="200"/>
+                </TransformGroup>
+            </Canvas.RenderTransform>
+            <Line X1="0" Y1="0" X2="100" Y2="100" Stroke="Black" StrokeThickness="2"/>
+            <Button Canvas.Top="50" Canvas.Left="80" FontSize="15"
+                    Foreground="Red" Name="label1" Content="My Button">
+                <Button.RenderTransform>
+                    <ScaleTransform ScaleY="-1"/><!--다시 좌표계를 반전시킨다.-->
+                </Button.RenderTransform>
+            </Button>
+            <TextBlock Canvas.Top="120" Canvas.Left="20" FontSize="12pt" Foreground="Blue">
+                <Bold>My Text Block</Bold>
+                <TextBlock.RenderTransform>
+                    <ScaleTransform ScaleY="-1"/>
+                    <!--다시 좌표계를 반전시킨다.-->
+                </TextBlock.RenderTransform>
+            </TextBlock>
+        </Canvas>
+    </Border>
+</Window>
