@@ -1,0 +1,57 @@
+﻿<Window x:Class="Chapter05.ImageBrushTile"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Chapter05"
+        mc:Ignorable="d"
+        Title="ImageBrushTile" Height="300" Width="300">
+    <Viewbox Stretch="Fill">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <StackPanel Margin="5" Grid.Column="0" Grid.Row="0">
+                <TextBlock Margin="5 5 5 0" Text="TileMode = Tile"/>
+                <TextBlock Margin="5 0 5 5" Text="Unit: Absolute"/>
+                <Button Width="135" Height="100">
+                    <Button.Background>
+                        <ImageBrush ImageSource="winter-g52a6abec3_1920.jpg" Viewport="0,0,25,25" TileMode="Tile" ViewportUnits="Absolute"/>
+                    </Button.Background>
+                </Button>
+            </StackPanel>
+            <StackPanel Margin="5" Grid.Column="1" Grid.Row="0">
+                <TextBlock Margin="5 5 5 0" Text="TileMode = FlipX"/>
+                <TextBlock Margin="5 0 5 5" Text="Unit: Absolute"/>
+                <Button Width="135" Height="100">
+                    <Button.Background>
+                        <ImageBrush ImageSource="winter-g52a6abec3_1920.jpg" Viewport="0,0,25,25" TileMode="FlipX" ViewportUnits="Absolute"/>
+                    </Button.Background>
+                </Button>
+            </StackPanel>
+            <StackPanel Margin="5" Grid.Column="0" Grid.Row="1">
+                <TextBlock Margin="5 5 5 0" Text="TileMode = FlipY"/>
+                <TextBlock Margin="5 0 5 5" Text="Unit: Relative"/>
+                <Button Width="135" Height="100">
+                    <Button.Background>
+                        <ImageBrush ImageSource="winter-g52a6abec3_1920.jpg" Viewport="0,0,0.2,0.25" TileMode="FlipY"/>
+                    </Button.Background>
+                </Button>
+            </StackPanel>
+            <StackPanel Margin="5" Grid.Column="1" Grid.Row="1">
+                <TextBlock Margin="5 5 5 0" Text="TileMode = FlipXY"/>
+                <TextBlock Margin="5 0 5 5" Text="Unit: Relative"/>
+                <Button Width="135" Height="100">
+                    <Button.Background>
+                        <ImageBrush ImageSource="winter-g52a6abec3_1920.jpg" Viewport="0,0,0.2,0.25" TileMode="FlipXY"/>
+                    </Button.Background>
+                </Button>
+            </StackPanel>
+        </Grid>
+    </Viewbox>
+</Window>

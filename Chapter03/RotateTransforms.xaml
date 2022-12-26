@@ -1,11 +1,11 @@
-﻿<Window x:Class="Chapter03.ScaleTransForms"
+﻿<Window x:Class="Chapter03.RotateTransforms"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Chapter03"
         mc:Ignorable="d"
-        Title="ScaleTransForms" Height="330" Width="480">
+        Title="RotateTransforms" Height="380" Width="480">
     <Viewbox Stretch="Uniform">
         <Grid Width="525" Height="330" HorizontalAlignment="Left" VerticalAlignment="Top" ShowGridLines="True">
             <Grid.ColumnDefinitions>
@@ -19,15 +19,16 @@
                     <Canvas ClipToBounds="True" Width="240" Height="250">
                         <Rectangle Canvas.Left="100" Canvas.Top="80" Width="50" Height="70" Fill="LightCoral" Opacity="0.5" Stroke="Black" StrokeThickness="2">
                             <Rectangle.RenderTransform>
-                                <ScaleTransform x:Name="rectScale" CenterX="25" CenterY="35"/>
+                                <RotateTransform x:Name="rotate"/>
                             </Rectangle.RenderTransform>
                         </Rectangle>
                         <Canvas.Triggers>
                             <EventTrigger RoutedEvent="Canvas.Loaded">
                                 <BeginStoryboard>
                                     <Storyboard RepeatBehavior="Forever" AutoReverse="True">
-                                        <DoubleAnimation Storyboard.TargetName="rectScale" Storyboard.TargetProperty="ScaleX" From="0" To="4" Duration="0:0:5"/>
-                                        <DoubleAnimation Storyboard.TargetName="rectScale" Storyboard.TargetProperty="ScaleY" From="0" To="4" Duration="0:0:5"/>
+                                        <DoubleAnimation Storyboard.TargetName="rotate" Storyboard.TargetProperty="Angle" From="0" To="360" Duration="0:0:5"/>
+                                        <DoubleAnimation Storyboard.TargetName="rotate" Storyboard.TargetProperty="Angle" From="-20" To="120" Duration="0:0:5"/>
+                                        <DoubleAnimation Storyboard.TargetName="rotate" Storyboard.TargetProperty="Angle" From="-50" To="90" Duration="0:0:5"/>
                                     </Storyboard>
                                 </BeginStoryboard>
                             </EventTrigger>
@@ -55,7 +56,7 @@
                         <Rectangle Canvas.Top="80" Canvas.Left="100" Width="50" Height="70" Stroke="Black" StrokeThickness="1" StrokeDashArray="3,1"/>
                         <Rectangle Canvas.Top="80" Canvas.Left="100" Width="50" Height="70" Fill="LightCoral" Opacity="0.5" Stroke="Black" StrokeThickness="2">
                             <Rectangle.RenderTransform>
-                                <TranslateTransform X="{Binding ElementName=tbX, Path=Text}" Y="{Binding ElementName=tbY,Path=Text}"/>
+                                <RotateTransform CenterX="{Binding ElementName=tbCenterX, Path=Text}" CenterY="{Binding ElementName=tbCenterY,Path=Text}" Angle="{Binding ElementName=tbAngle, Path=Text}"/>
                             </Rectangle.RenderTransform>
                         </Rectangle>
                     </Canvas>
