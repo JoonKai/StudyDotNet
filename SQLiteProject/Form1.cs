@@ -191,8 +191,18 @@ namespace SQLiteProject
 
         private void button8_Click(object sender, EventArgs e)
         {
-            string studentIDq = "insert into Vendor (StudentID, CourseCode, Firstname, Surname,AddMaths, Maths, Business, Biology, Chemistry, Computing,English, Physics, Total, Average, Ranking)values('"+StudentID_txt.Text+"','"+ CourseCode_cmb.Text + "','" + FirstName_txt.Text + "','" + SurName_txt.Text + "','" + AddMaths_txt.Text + "','" + Maths_txt.Text + "','" + Business_txt.Text + "','" + Biology_txt.Text + "','" + Chemistry_txt.Text + "','" + Computing_txt.Text + "','" + English_txt.Text + "','" + Physics_txt.Text + "','" + TotalScore_txt.Text + "','" + Average_txt.Text + "','" + Ranking_txt.Text +"')";
-            ExcuteQuery(studentIDq);
+            string StudentIDq = "insert into Vendor (StudentID, CourseCode, Firstname, Surname,AddMaths, Maths, Business, Biology, Chemistry, Computing,English, Physics, Total, Average, Ranking)values('"+StudentID_txt.Text+"','"+ CourseCode_cmb.Text + "','" + FirstName_txt.Text + "','" + SurName_txt.Text + "','" + AddMaths_txt.Text + "','" + Maths_txt.Text + "','" + Business_txt.Text + "','" + Biology_txt.Text + "','" + Chemistry_txt.Text + "','" + Computing_txt.Text + "','" + English_txt.Text + "','" + Physics_txt.Text + "','" + TotalScore_txt.Text + "','" + Average_txt.Text + "','" + Ranking_txt.Text +"')";
+            ExcuteQuery(StudentIDq);
+            LoadData();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+
+            string StudentIDq = "delete from Vendor where ID=id" + StudentID_txt + CourseCode_cmb
+                + FirstName_txt + SurName_txt + AddMaths_txt + Maths_txt + Biology_txt + Chemistry_txt +
+                Computing_txt + English_txt + Physics_txt + TotalScore_txt + Average_txt + Ranking_txt;
+            ExcuteQuery(StudentIDq);
             LoadData();
         }
     }

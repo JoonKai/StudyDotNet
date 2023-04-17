@@ -82,7 +82,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
+            this.Update_btn = new System.Windows.Forms.Button();
             this.Reset_btn = new System.Windows.Forms.Button();
             this.Exit_btn = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
@@ -632,18 +632,19 @@
             this.button4.TabIndex = 7;
             this.button4.Text = "Delete";
             this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
-            // button8
+            // Update_btn
             // 
-            this.button8.BackColor = System.Drawing.Color.CadetBlue;
-            this.button8.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button8.Location = new System.Drawing.Point(1050, 1208);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(202, 47);
-            this.button8.TabIndex = 8;
-            this.button8.Text = "Update";
-            this.button8.UseVisualStyleBackColor = false;
-            this.button8.Click += new System.EventHandler(this.button8_Click);
+            this.Update_btn.BackColor = System.Drawing.Color.CadetBlue;
+            this.Update_btn.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Update_btn.Location = new System.Drawing.Point(1050, 1208);
+            this.Update_btn.Name = "Update_btn";
+            this.Update_btn.Size = new System.Drawing.Size(202, 47);
+            this.Update_btn.TabIndex = 8;
+            this.Update_btn.Text = "Update";
+            this.Update_btn.UseVisualStyleBackColor = false;
+            this.Update_btn.Click += new System.EventHandler(this.button8_Click);
             // 
             // Reset_btn
             // 
@@ -677,7 +678,7 @@
             this.ClientSize = new System.Drawing.Size(1801, 1300);
             this.Controls.Add(this.Exit_btn);
             this.Controls.Add(this.Reset_btn);
-            this.Controls.Add(this.button8);
+            this.Controls.Add(this.Update_btn);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
@@ -758,7 +759,7 @@
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.TextBox Chemistry_txt;
         private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button Update_btn;
         private System.Windows.Forms.Button Reset_btn;
         private System.Windows.Forms.Button Exit_btn;
     }
