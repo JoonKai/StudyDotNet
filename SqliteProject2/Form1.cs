@@ -60,8 +60,10 @@ namespace SqliteProject2
         {
             //create open connection method
             openConnection();
+            updateDataBinding();
             closeConnection();
         }
+
 
         private void closeConnection()
         {
@@ -78,6 +80,68 @@ namespace SqliteProject2
             {
                 connection.Open();
                 MessageBox.Show("The connection is: " + connection.State.ToString());
+            }
+        }
+
+        private void exit_btn_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+        private void displayPosition()
+        {
+            positionLabel.Text = "Position: " + Convert.ToString(bindingSrc.Position + 1) +"/" + bindingSrc.Count.ToString();
+        }
+        private void updateDataBinding(SQLiteCommand cmd = null)
+        {
+            try
+            {
+                TextBox tb;
+                foreach (Control c in groupBox1.Controls)
+                {
+                    if(c.GetType() == typeof(TextBox))
+                    {
+                        tb = (TextBox)c;
+                        tb.DataBindings.Clear();
+                        tb.Text = "";
+                    }
+                    dbCommand = "SELECT";
+
+                    sql = "SELECT * FROM Vendor ORDER BY AutoID ASC;";
+                    if(cmd == null)
+                    {
+                        command.CommandText = sql;
+                    }
+                    else
+                    {
+                        command = cmd;
+                    }
+                }
+                SQLiteDataAdapter adapter = new SQLiteDataAdapter(command);
+                DataSet dataSt = new DataSet();
+                adapter.Fill(dataSt, "Vendor");
+                bindingSrc = new BindingSource();
+                bindingSrc.DataSource = dataSt.Tables["Vendor"];
+
+                //simple databinding
+
+                AutoID_txt.DataBindings.Add("Text", bindingSrc, "AutoID");
+                FirstName_txt.DataBindings.Add("Text", bindingSrc, "FirstName");
+                LastName_txt.DataBindings.Add("Text", bindingSrc, "LastName");
+                JobTitle_txt.DataBindings.Add("Text", bindingSrc, "JobTitle");
+                Email_txt.DataBindings.Add("Text", bindingSrc, "Email");
+                Phone_txt.DataBindings.Add("Text", bindingSrc, "Phone");
+
+                dataGridView1.DataSource = bindingSrc;
+
+                dataGridView1.AutoResizeColumns((DataGridViewAutoSizeColumnsMode)DataGridViewAutoSizeColumnsMode.AllCells);
+                dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
+                dataGridView1.Columns[0].Width = 70;//AutoID
+                displayPosition();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Data Binding Error: " + ex.Message.ToString(), "Error Message : son", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
