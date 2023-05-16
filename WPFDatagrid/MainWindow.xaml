@@ -6,7 +6,39 @@
         xmlns:local="clr-namespace:WPFDatagrid"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    <Window.DataContext>
+        <local:Songs/><!--클래스를 지정-->
+    </Window.DataContext>
+    <Window.Resources>
+        <Style TargetType="DataGridColumnHeader">
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Background" Value="Black"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+        <Style TargetType="DataGridCell">
+            <Setter Property="BorderBrush" Value="Gainsboro"/>
+            <Setter Property="BorderThickness" Value="3"/>
+        </Style>
+    </Window.Resources>
     <Grid>
-        <DataGrid x:Name="DG"/>
+        <DataGrid x:Name="DG" ItemsSource="{Binding SongList}"
+                  HorizontalGridLinesBrush="Red" 
+                  VerticalGridLinesBrush="Blue"
+                  GridLinesVisibility="None"
+                  HeadersVisibility="All"
+                  CanUserReorderColumns="False"
+                  CanUserAddRows="False"
+                  CanUserResizeColumns="False"
+                  CanUserResizeRows="False"
+                  SelectionUnit="CellOrRowHeader"
+                  SelectionMode="Single"
+                  ColumnWidth="auto"
+                  RowBackground="Beige"
+                  AlternatingRowBackground="BurlyWood"
+                  FlowDirection="LeftToRight"
+                  FontSize="14"
+                  FrozenColumnCount="3"
+                  />
     </Grid>
 </Window>
