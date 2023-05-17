@@ -39,6 +39,20 @@ namespace WPFDatagrid2
                 var line = lines[i].Split(',');
                 var g = line[2].Split(' ', '&', '-');
                 var gr = g.Length > 1 ? g[0] + g[1] : g[0];
+
+                List<Artist> artists = new List<Artist>();
+
+                if(line.Length > 6)
+                {
+                    for (int j = 6; j < line.Length; j++)
+                    {
+                        var artist = new Artist()
+                        {
+                            Name = line[j],
+                        };
+                        artists.Add(artist);
+                    }
+                }
                 var song = new Song()
                 {
                     Id = int.Parse(line[0]),
@@ -49,11 +63,17 @@ namespace WPFDatagrid2
                     Genre = (Genre)Enum.Parse(typeof(Genre), gr),
                     ResealeYear = DateTime.Parse(line[5] + ",1,1"),
                     URL = new Uri($"WWW.{line[3]}.com", UriKind.Relative),
+                    Artists = artists,
                 };
                 list.Add(song);
             }
             return list;
         }
+    }
+    public class Artist
+    {
+        public string Name { get; set; }
+
     }
     public class Song
     {
@@ -65,6 +85,7 @@ namespace WPFDatagrid2
         public Genre Genre { get; set; }
         public DateTime ResealeYear { get; set; }
         public Uri URL { get; set; }
+        public List<Artist> Artists { get; set; }
     }
     public enum Genre
     {
