@@ -18,6 +18,17 @@
                 <x:Type TypeName="local:Genre"/>
             </ObjectDataProvider.MethodParameters>
         </ObjectDataProvider>
+        <Style x:Key="TitleStyle" TargetType="DataGridCell">
+            <Setter Property="Foreground" Value="Red"/>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding IsSoundtrack}" Value="true">
+                    <Setter Property="Foreground" Value="Green"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="AltColBackground" TargetType="{x:Type DataGridCell}">
+            <Setter Property="Background" Value="Gainsboro"/>
+        </Style>
     </Window.Resources>
     <Grid>
         <DataGrid FontSize="14" ItemsSource="{Binding SongList}"
@@ -25,7 +36,7 @@
                   GridLinesVisibility="None"
                   AreRowDetailsFrozen="True">
             <DataGrid.Columns>
-                <DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="ID" CellStyle="{StaticResource AltColBackground}">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <WrapPanel>
@@ -42,23 +53,29 @@
                 </DataGridTemplateColumn>
                 <!--<DataGridTextColumn Header="ID"
                                     Binding="{Binding Id}"/>-->
-                <DataGridTextColumn Header="TITLE"
-                                    Binding="{Binding Title}"/>
+                <DataGridTextColumn Header=" SONG TITLE"
+                                    Binding="{Binding Title}"
+                                    FontWeight="Thin"/>
                 <DataGridTextColumn Header="ARTIST"
-                                    Binding="{Binding Artist}"/>
+                                    Binding="{Binding Artist}"
+                                    FontFamily="segoe script"
+                                    CellStyle="{StaticResource AltColBackground}"/>
                 <DataGridCheckBoxColumn Header="SOUNDTRACK"
                                         Binding="{Binding IsSoundtrack}"/>
                 <DataGridTextColumn Header="MOVIE TITLE"
-                                    Binding="{Binding MovieTitle}"/>
+                                    Binding="{Binding MovieTitle}"
+                                    CellStyle="{StaticResource TitleStyle}"/>
                 <DataGridComboBoxColumn Header="GENRE"
                                         TextBinding="{Binding Genre}"
-                                        ItemsSource="{Binding Source={StaticResource ObjDataProvider}}"/>
+                                        ItemsSource="{Binding Source={StaticResource ObjDataProvider}}"
+                                        CellStyle="{StaticResource AltColBackground}"/>
                 <!--<DataGridTextColumn Header="YEAR"
                                     Binding="{Binding ResealeYear, StringFormat=yyyy}"/>-->
-                <DataGridTemplateColumn Header="YEAR">
+                <DataGridTemplateColumn Header="YEAR" >
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <TextBlock Text="{Binding ResealeYear, StringFormat=yyyy}"/>
+                            <TextBlock Text="{Binding ResealeYear, StringFormat=yyyy}"
+                                       TextDecorations="Underline"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                     <DataGridTemplateColumn.CellEditingTemplate>
@@ -68,7 +85,8 @@
                     </DataGridTemplateColumn.CellEditingTemplate>
                 </DataGridTemplateColumn>
                 <DataGridHyperlinkColumn Header="URL"
-                                         Binding="{Binding URL}"/>
+                                         Binding="{Binding URL}"
+                                         CellStyle="{StaticResource AltColBackground}"/>
             </DataGrid.Columns>
             <DataGrid.RowDetailsTemplate>
                 <DataTemplate>
