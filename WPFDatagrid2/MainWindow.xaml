@@ -28,13 +28,15 @@
         </Style>
         <Style x:Key="AltColBackground" TargetType="{x:Type DataGridCell}">
             <Setter Property="Background" Value="Gainsboro"/>
+            <Setter Property="BorderBrush" Value="Gainsboro"/>
         </Style>
     </Window.Resources>
     <Grid>
-        <DataGrid FontSize="14" ItemsSource="{Binding SongList}"
+        <DataGrid FontSize="14" ItemsSource="{Binding SongList}" Name="GRD"
                   AutoGenerateColumns="False"
                   GridLinesVisibility="None"
-                  AreRowDetailsFrozen="True">
+                  AreRowDetailsFrozen="True"
+                  RowEditEnding="GRD_RowEditEnding">
             <DataGrid.Columns>
                 <DataGridTemplateColumn Header="ID" CellStyle="{StaticResource AltColBackground}">
                     <DataGridTemplateColumn.CellTemplate>
@@ -47,26 +49,26 @@
                     </DataGridTemplateColumn.CellTemplate>
                     <DataGridTemplateColumn.CellEditingTemplate>
                         <DataTemplate>
-                            <TextBox Text="{Binding Id}"/>
+                            <TextBox Text="{Binding Id, UpdateSourceTrigger=PropertyChanged}"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellEditingTemplate>
                 </DataGridTemplateColumn>
                 <!--<DataGridTextColumn Header="ID"
                                     Binding="{Binding Id}"/>-->
                 <DataGridTextColumn Header=" SONG TITLE"
-                                    Binding="{Binding Title}"
+                                    Binding="{Binding Title, UpdateSourceTrigger=PropertyChanged}"
                                     FontWeight="Thin"/>
                 <DataGridTextColumn Header="ARTIST"
-                                    Binding="{Binding Artist}"
+                                    Binding="{Binding Artist, UpdateSourceTrigger=PropertyChanged}"
                                     FontFamily="segoe script"
                                     CellStyle="{StaticResource AltColBackground}"/>
                 <DataGridCheckBoxColumn Header="SOUNDTRACK"
-                                        Binding="{Binding IsSoundtrack}"/>
+                                        Binding="{Binding IsSoundtrack, UpdateSourceTrigger=PropertyChanged}"/>
                 <DataGridTextColumn Header="MOVIE TITLE"
-                                    Binding="{Binding MovieTitle}"
+                                    Binding="{Binding MovieTitle, UpdateSourceTrigger=PropertyChanged}"
                                     CellStyle="{StaticResource TitleStyle}"/>
                 <DataGridComboBoxColumn Header="GENRE"
-                                        TextBinding="{Binding Genre}"
+                                        TextBinding="{Binding Genre, UpdateSourceTrigger=PropertyChanged}"
                                         ItemsSource="{Binding Source={StaticResource ObjDataProvider}}"
                                         CellStyle="{StaticResource AltColBackground}"/>
                 <!--<DataGridTextColumn Header="YEAR"
@@ -80,15 +82,15 @@
                     </DataGridTemplateColumn.CellTemplate>
                     <DataGridTemplateColumn.CellEditingTemplate>
                         <DataTemplate>
-                            <DatePicker SelectedDate="{Binding ResealeYear}"/>
+                            <DatePicker SelectedDate="{Binding ResealeYear, UpdateSourceTrigger=PropertyChanged}"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellEditingTemplate>
                 </DataGridTemplateColumn>
                 <DataGridHyperlinkColumn Header="URL"
-                                         Binding="{Binding URL}"
+                                         Binding="{Binding URL, UpdateSourceTrigger=PropertyChanged}"
                                          CellStyle="{StaticResource AltColBackground}"/>
             </DataGrid.Columns>
-            <DataGrid.RowDetailsTemplate>
+            <!--<DataGrid.RowDetailsTemplate>
                 <DataTemplate>
                     <StackPanel Margin="15,0">
                         <TextBlock Text="{Binding MovieTitle}"/>
@@ -96,7 +98,7 @@
                                   HeadersVisibility="None"/>
                     </StackPanel>
                 </DataTemplate>
-            </DataGrid.RowDetailsTemplate>
+            </DataGrid.RowDetailsTemplate>-->
         </DataGrid>
     </Grid>
 </Window>

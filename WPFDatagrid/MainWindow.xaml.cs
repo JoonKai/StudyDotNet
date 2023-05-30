@@ -19,7 +19,7 @@ namespace WPFDatagrid
         public List<Song> SongList { get; set; } = GetSongs();
         public static List<Song> GetSongs()
         {
-            var file = @"C:\Users\thstj\OneDrive\문서\songs.csv";
+            var file = @"csv\songs.csv";
             var lines=File.ReadAllLines(file);
             var list= new List<Song>();
             for (int i = 0; i<lines.Length; i++)

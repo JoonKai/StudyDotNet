@@ -25,13 +25,24 @@ namespace WPFDatagrid2
         {
             InitializeComponent();
         }
+
+        private void GRD_RowEditEnding(object sender, DataGridRowEditEndingEventArgs e)
+        {
+            Song newsong= e.Row.DataContext as Song;
+            AddNewSong(newsong);
+        }
+        void AddNewSong(Song s)
+        {
+            var file = @"G:\songs.csv";
+            File.AppendAllText(file, $"{s.Id},{s.Title},{s.Genre},{s.Artists},{s.MovieTitle},{s.ResealeYear.Year},{s.URL}\n");
+        }
     }
     public class Songs
     {
         public List<Song> SongList { get; set; } = GetSongs();
         public static List<Song> GetSongs()
         {
-            var file = @"csv/songs.csv";
+            var file = @"G:\songs.csv";
             var lines = File.ReadAllLines(file);
             var list = new List<Song>();
             for (int i = 0; i < lines.Length; i++)
