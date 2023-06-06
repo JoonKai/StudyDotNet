@@ -30,6 +30,17 @@ namespace WPFDatagrid2
         {
             Song newsong= e.Row.DataContext as Song;
             AddNewSong(newsong);
+            UpdateSong();
+        }
+        const string file= @"G:\songs.csv";
+        void UpdateSong()
+        {
+            string lines = "";
+            foreach (var s in Songs.SongList) 
+            {
+                lines+= $"{s.Id},{s.Title},{s.Genre},{s.Artists},{s.MovieTitle},{s.ResealeYear.Year},{s.URL}\n";
+            }
+            File.WriteAllText(file, lines);
         }
         void AddNewSong(Song s)
         {
@@ -39,7 +50,7 @@ namespace WPFDatagrid2
     }
     public class Songs
     {
-        public List<Song> SongList { get; set; } = GetSongs();
+        public static List<Song> SongList { get; set; } = GetSongs();
         public static List<Song> GetSongs()
         {
             var file = @"G:\songs.csv";

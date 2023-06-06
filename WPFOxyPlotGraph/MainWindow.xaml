@@ -27,8 +27,8 @@
                 <ComboBoxItem Content="수학"/>
                 <ComboBoxItem Content="영어"/>
             </ComboBox>
-            <!--<Button Content="조회" Command="{Binding LoadOxyPlotCommand}"
-                    CommandParameter="{Binding Text, ElementName=cmbSubject}"/>-->
+            <Button Content="조회" Command="{Binding LoadOxyPlotCommand}"
+                    CommandParameter="{Binding Text, ElementName=cmbSubject}"/>
         </StackPanel>
     </Grid>
 </Window>
