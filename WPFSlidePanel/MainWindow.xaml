@@ -1,0 +1,25 @@
+﻿<Window x:Class="WPFSlidePanel.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFSlidePanel"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <!--SlidePanel-->
+        <Canvas/>
+        <Grid Background="#f8f8f8">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <Border Grid.Row="0" Background="#003f5c" Height="50">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="10">
+                    <Button Content="-" FontSize="20" FontWeight="Bold" Foreground="White" Padding="10 0" Background="Transparent"/>
+                </StackPanel>
+            </Border>
+        </Grid>
+    </Grid>
+</Window>

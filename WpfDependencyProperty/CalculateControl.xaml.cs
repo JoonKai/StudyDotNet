@@ -34,7 +34,16 @@ namespace WpfDependencyProperty
         public static readonly DependencyProperty OperatorProperty =
             DependencyProperty.Register("Operator", typeof(string), typeof(CalculateControl), new PropertyMetadata("+", OnValueChanged), new ValidateValueCallback(IsValidOperator));
 
+        public static readonly DependencyProperty DesignModeProperty =
+            DependencyProperty.Register("DesignMode", typeof(eDesignMode), typeof(CalculateControl), new PropertyMetadata(eDesignMode.White, OnDesignModeChanged));
+
         
+
+        public eDesignMode DesignMode
+        {
+            get { return (eDesignMode)GetValue(DesignModeProperty); }
+            set { SetValue(DesignModeProperty, value); }
+        }
 
         public decimal Value1
         {
@@ -51,9 +60,42 @@ namespace WpfDependencyProperty
             get { return (string)GetValue(OperatorProperty); }
             set { SetValue(OperatorProperty, value); }
         }
-        
 
+        public Brush TextBoxForeground { get; set; } = Brushes.Black;         
+        public Brush TextBoxBackground { get; set; } = Brushes.White;
+        public Brush UserControlBackground { get; set; } = Brushes.White;
 
+        private void ChangeDesignMode(eDesignMode designMode)
+        {
+            if(designMode == eDesignMode.White)
+            {
+                TextBoxForeground = Brushes.Black;
+                TextBoxBackground = Brushes.White;
+                UserControlBackground = Brushes.White;
+            }
+            else
+            {
+                TextBoxForeground = Brushes.White;
+                TextBoxBackground = Brushes.DarkGray;
+                UserControlBackground = Brushes.Black;
+            }
+            OnPropertyChanged(nameof(TextBoxForeground));
+            OnPropertyChanged(nameof(TextBoxBackground));
+            OnPropertyChanged(nameof(UserControlBackground));
+        }
+        private static void OnDesignModeChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            
+            //정적메서드이기 때문에 CalculateControl을 형변환 해서 가져와서 체인지 모드 가동
+            CalculateControl calculateControl = (CalculateControl)d;
+            if (e.NewValue != e.OldValue)
+            {
+                if (e.NewValue is eDesignMode designMode)
+                {
+                    calculateControl.ChangeDesignMode(designMode);
+                }
+            }
+        }
         private static void OnValueChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)// DependencyObject는 CalculateControl 객체가 넘어옴
         {
             CalculateControl calculateControl = (CalculateControl)d;

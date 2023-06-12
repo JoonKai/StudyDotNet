@@ -1,4 +1,6 @@
-﻿using System;
+﻿using RecordBookMVVM.Models;
+using RecordBookMVVM.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,7 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace WpfDependencyProperty
+namespace RecordBookMVVM
 {
     /// <summary>
     /// MainWindow.xaml에 대한 상호 작용 논리
@@ -23,7 +25,20 @@ namespace WpfDependencyProperty
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = new MainViewModel();
+            MainViewModel mainViewModel = new MainViewModel();
+            this.DataContext = mainViewModel;
         }
+
+        private void FilterTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            //UserList.Items.Filter = FilterMethod;
+        }
+
+        //private bool FilterMethod(object obj)
+        //{
+        //    var user = (User)obj;
+
+        //    return user.Name.Contains(FilterTextBox.Text,StringComparison.OrdinalIgnoreCase);
+        //}
     }
 }
