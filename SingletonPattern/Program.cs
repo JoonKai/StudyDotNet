@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.Extensions.DependencyInjection;
+using SingletonPattern.Singletons;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -8,15 +10,29 @@ namespace SingletonPattern
 {
     internal static class Program
     {
-        /// <summary>
-        /// 해당 애플리케이션의 주 진입점입니다.
-        /// </summary>
+        //의존성 주입 코드
+        private static IServiceProvider ConfigureServices()
+        {
+            var services = new ServiceCollection();
+            services.AddSingleton<ILogger, Logger>();
+            services.AddTransient<Form1>();
+            services.AddTransient<Form2>();
+
+
+            return services.BuildServiceProvider();
+        }
+
         [STAThread]
         static void Main()
         {
-            Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            var services = ConfigureServices();
+            var form1 = services.GetService<Form1>();
+
+
+
+            Application.EnableVisualStyles();
+            Application.Run(form1);
         }
     }
 }

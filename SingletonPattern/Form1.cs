@@ -1,4 +1,5 @@
-﻿using SingletonPattern.Singletons;
+﻿using Microsoft.Extensions.DependencyInjection;
+using SingletonPattern.Singletons;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,22 +14,27 @@ namespace SingletonPattern
 {
     public partial class Form1 : Form
     {
-        public Form1()
+        private readonly ILogger _logger;
+        private readonly IServiceProvider _services;
+
+        public Form1(ILogger logger, IServiceProvider services)
         {
             InitializeComponent();
 
-            Logger.Instance.Log("홈버튼이 생성되었습니다.");
+            _logger = logger;
+            _services = services;
+            _logger.Log("폼1이 생성되었습니다.");
         }
 
         private void btnCreateForm2_Click(object sender, EventArgs e)
         {
-            var frm2 = new Form1();
-            frm2.Show();
+            var frm2 = _services.GetService<Form2>();
+            frm2?.Show();
         }
 
         private void btnShowLogs_Click(object sender, EventArgs e)
         {
-            string logs = Logger.Instance.GetLog();
+            string logs = _logger.GetLogs();
             MessageBox.Show(logs);
         }
     }
