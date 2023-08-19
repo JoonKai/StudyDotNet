@@ -105,6 +105,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DependencyInjection", "Depe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DependencyInjectionProject", "DependencyInjectionProject\DependencyInjectionProject.csproj", "{20CAD730-61F6-48C0-B15A-195D41E0739E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CaliburnProject", "CaliburnProject\CaliburnProject.csproj", "{426F65E7-7AD5-4B2C-ADB2-C4C6F1CED967}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DependencyInjectionProject2", "DependencyInjectionProject2\DependencyInjectionProject2.csproj", "{05D1C02B-EA88-4672-815F-F1638FF7E9AE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -223,6 +227,14 @@ Global
 		{20CAD730-61F6-48C0-B15A-195D41E0739E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{20CAD730-61F6-48C0-B15A-195D41E0739E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{20CAD730-61F6-48C0-B15A-195D41E0739E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{426F65E7-7AD5-4B2C-ADB2-C4C6F1CED967}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{426F65E7-7AD5-4B2C-ADB2-C4C6F1CED967}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{426F65E7-7AD5-4B2C-ADB2-C4C6F1CED967}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{426F65E7-7AD5-4B2C-ADB2-C4C6F1CED967}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05D1C02B-EA88-4672-815F-F1638FF7E9AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05D1C02B-EA88-4672-815F-F1638FF7E9AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05D1C02B-EA88-4672-815F-F1638FF7E9AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05D1C02B-EA88-4672-815F-F1638FF7E9AE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -276,6 +288,8 @@ Global
 		{E9771018-9788-4299-82BE-940A25CE31BC} = {B1391271-7BA5-45F2-9960-F8ABDCC43AEE}
 		{7C74D1EA-F194-423B-81A2-FA087444997A} = {087C1EEC-D309-4494-8BBC-892660576224}
 		{20CAD730-61F6-48C0-B15A-195D41E0739E} = {7C74D1EA-F194-423B-81A2-FA087444997A}
+		{426F65E7-7AD5-4B2C-ADB2-C4C6F1CED967} = {7C74D1EA-F194-423B-81A2-FA087444997A}
+		{05D1C02B-EA88-4672-815F-F1638FF7E9AE} = {7C74D1EA-F194-423B-81A2-FA087444997A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B6F109F3-125E-456E-8FA6-A2DDE36CD45A}
